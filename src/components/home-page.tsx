@@ -53,6 +53,12 @@ function HeroSection() {
   const productY = useTransform(smoothY, [-0.5, 0.5], [-16, 16]);
   const floatX = useTransform(smoothX, [-0.5, 0.5], [18, -18]);
   const floatY = useTransform(smoothY, [-0.5, 0.5], [12, -12]);
+  const laptopX = useTransform(smoothX, [-0.5, 0.5], [-8, 8]);
+  const laptopY = useTransform(smoothY, [-0.5, 0.5], [-5, 5]);
+  const phoneX = useTransform(smoothX, [-0.5, 0.5], [14, -14]);
+  const phoneY = useTransform(smoothY, [-0.5, 0.5], [10, -10]);
+  const budsX = useTransform(smoothX, [-0.5, 0.5], [-12, 12]);
+  const budsY = useTransform(smoothY, [-0.5, 0.5], [8, -8]);
 
   return (
     <section
@@ -61,6 +67,10 @@ function HeroSection() {
         const rect = event.currentTarget.getBoundingClientRect();
         mouseX.set((event.clientX - rect.left) / rect.width - 0.5);
         mouseY.set((event.clientY - rect.top) / rect.height - 0.5);
+      }}
+      onMouseLeave={() => {
+        mouseX.set(0);
+        mouseY.set(0);
       }}
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_44%,rgba(139,92,255,0.16),transparent_34rem),radial-gradient(circle_at_57%_29%,rgba(57,255,20,0.085),transparent_28rem),linear-gradient(180deg,#010102_0%,#030304_48%,#050505_100%)]" />
@@ -97,17 +107,25 @@ function HeroSection() {
           <div className="absolute right-[8%] top-[14%] h-80 w-80 rounded-full bg-[#8B5CFF]/14 blur-3xl" />
           <div className="absolute left-[18%] top-[10%] h-72 w-72 rounded-full bg-black/70 blur-3xl" />
 
-          <motion.div animate={{ y: [0, -9, 0], rotate: [0, 0.7, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[4%] left-[9%] w-[84%] opacity-95">
-            <ProductVisual shape="laptop" size="hero" accent="purple" />
+          <motion.div style={{ x: laptopX, y: laptopY }} className="absolute bottom-[4%] left-[9%] w-[84%] opacity-95">
+            <motion.div animate={{ y: [0, -9, 0], rotate: [0, 0.7, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}>
+              <ProductVisual shape="laptop" size="hero" accent="purple" />
+            </motion.div>
           </motion.div>
-          <motion.div animate={{ y: [0, -16, 0], rotate: [-3, -1, -3] }} transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }} className="absolute left-[20%] top-[-4%] w-[48%]">
-            <ProductVisual shape="phone" size="hero" accent="green" />
+          <motion.div style={{ x: phoneX, y: phoneY }} className="absolute left-[20%] top-[-4%] w-[48%]">
+            <motion.div animate={{ y: [0, -16, 0], rotate: [-3, -1, -3] }} transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}>
+              <ProductVisual shape="phone" size="hero" accent="green" />
+            </motion.div>
           </motion.div>
-          <motion.div style={{ x: floatX, y: floatY }} animate={{ y: [0, 11, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[20%] right-[2%] w-[31%]">
-            <ProductVisual shape="watch" size="lg" accent="purple" />
+          <motion.div style={{ x: floatX, y: floatY }} className="absolute bottom-[20%] right-[2%] w-[31%]">
+            <motion.div animate={{ y: [0, 11, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}>
+              <ProductVisual shape="watch" size="lg" accent="purple" />
+            </motion.div>
           </motion.div>
-          <motion.div animate={{ y: [0, -8, 0], rotate: [0, -1.2, 0] }} transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[14%] left-[1%] w-[28%]">
-            <ProductVisual shape="buds" size="md" accent="neutral" />
+          <motion.div style={{ x: budsX, y: budsY }} className="absolute bottom-[14%] left-[1%] w-[28%]">
+            <motion.div animate={{ y: [0, -8, 0], rotate: [0, -1.2, 0] }} transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}>
+              <ProductVisual shape="buds" size="md" accent="neutral" />
+            </motion.div>
           </motion.div>
 
           <Link href="/product/iphone-17-pro" className="hero-glass-card absolute left-[1%] top-[15%] hidden w-52 rounded-3xl border border-white/12 bg-black/30 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition hover:-translate-y-1 hover:border-white/22 lg:block">
@@ -156,9 +174,9 @@ function CategoryExperience() {
         <SectionIntro
           eyebrow="Категорії"
           title="Категорії з відчуттям преміального шоуруму."
-          text="Великі продуктовые блоки, чиста навігація і зрозумілий шлях до покупки без маркетплейсного шуму."
+          text="Великі продуктові блоки, чиста навігація і зрозумілий шлях до покупки без маркетплейсного шуму."
         />
-        <div className="mt-14 grid gap-5 lg:grid-cols-6">
+        <div className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-5 pb-2 lg:grid lg:snap-none lg:grid-cols-6 lg:overflow-visible lg:pb-0">
           {premiumCategories.map((category, index) => (
             <motion.div
               key={category.name}
@@ -167,7 +185,7 @@ function CategoryExperience() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: index * 0.06, duration: 0.65, ease: ds.motion.ease }}
               whileHover={{ y: -8 }}
-              className={cn(index < 2 ? "lg:col-span-3" : "lg:col-span-2")}
+              className={cn("w-[82vw] shrink-0 snap-start sm:w-[420px] lg:w-auto lg:shrink", index < 2 ? "lg:col-span-3" : "lg:col-span-2")}
             >
               <Link
                 href={category.href}
@@ -203,9 +221,9 @@ function FeaturedProducts() {
           title="Популярні пристрої, які хочеться купити з першого погляду."
           text="Відібрані позиції з чистою презентацією, ціною, категорією і швидким переходом до покупки."
         />
-        <div className="mt-14 grid gap-5 lg:grid-cols-4">
+        <div className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-5 pb-2 lg:grid lg:snap-none lg:grid-cols-4 lg:overflow-visible lg:pb-0">
           {featured.map((product, index) => (
-            <ProductCard key={product.id} {...product} price={product.priceLabel} large={index === 0} />
+            <ProductCard key={product.id} {...product} price={product.priceLabel} large={index === 0} className="w-[82vw] shrink-0 snap-start sm:w-[420px] lg:w-auto lg:shrink" />
           ))}
         </div>
       </div>

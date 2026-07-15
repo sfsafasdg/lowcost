@@ -144,12 +144,23 @@ body::after {
   }
 
   .hero-showcase {
-    min-height: 430px;
-    transform: scale(0.94);
+    min-height: 360px;
+    margin-top: -0.75rem;
+    margin-bottom: -2.25rem;
+    transform: scale(0.82);
     transform-origin: center top;
   }
 
   .hero-reflection {
-    opacity: 0.2;
+    opacity: 0.16;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-showcase {
+    min-height: 330px;
+    margin-top: -1rem;
+    margin-bottom: -2.75rem;
+    transform: scale(0.76);
   }
 }

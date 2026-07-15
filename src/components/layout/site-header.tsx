@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { categories, CategorySlug } from "@/lib/store-data";
 import { cn } from "@/lib/utils";
 import { MegaMenu } from "@/components/layout/mega-menu";
@@ -12,12 +12,27 @@ import { SearchOverlay } from "@/components/search/search-overlay";
 export function SiteHeader() {
   const [activeSlug, setActiveSlug] = useState<CategorySlug | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [compact, setCompact] = useState(false);
   const activeCategory = categories.find((category) => category.slug === activeSlug);
+
+  useEffect(() => {
+    const updateHeader = () => setCompact(window.scrollY > 24);
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, []);
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-[#050505]/72 shadow-[0_18px_70px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
-        <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5">
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] shadow-[0_18px_70px_rgba(0,0,0,0.28)] backdrop-blur-2xl transition-all duration-500 lg:bg-[#050505]/72",
+          compact ? "bg-[#050505]/58" : "bg-[#050505]/72"
+        )}
+      >
+        <div className={cn("mx-auto flex max-w-[1440px] items-center justify-between px-5 transition-all duration-500 lg:h-16", compact ? "h-12" : "h-16")}>
           <Link href="/" className="flex items-center gap-3" aria-label="Головна Lowcost" onMouseEnter={() => setActiveSlug(null)}>
             <span className="relative h-9 w-9 overflow-hidden rounded-xl border border-[#39FF14]/28 bg-black shadow-[0_0_30px_rgba(57,255,20,0.16)]">
               <Image src="/lowcost-logo.png" alt="Lowcost logo" fill sizes="36px" className="object-cover" priority />
@@ -52,7 +67,7 @@ export function SiteHeader() {
             </Link>
           </div>
         </div>
-        <div className="no-scrollbar flex gap-5 overflow-x-auto border-t border-white/[0.06] px-5 py-3 text-sm text-zinc-500 lg:hidden">
+        <div className={cn("no-scrollbar flex gap-5 overflow-x-auto border-t border-white/[0.06] px-5 text-sm text-zinc-500 transition-all duration-500 lg:hidden", compact ? "py-2" : "py-3")}>
           {categories.map((category) => (
             <Link key={category.slug} href={category.href} className="shrink-0 transition hover:text-white">
               {category.navLabel}

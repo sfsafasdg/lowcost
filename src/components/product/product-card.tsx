@@ -28,7 +28,7 @@ export function ProductCard({ id, name, description, price, category, shape, acc
       transition={{ duration: 0.65, ease: ds.motion.ease }}
       whileHover={{ y: -8 }}
       className={cn(
-        "product-card-premium group relative flex min-h-[520px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,#141416_0%,#0C0C0E_100%)] p-6 transition duration-500 hover:border-white/20 hover:shadow-[0_34px_120px_rgba(0,0,0,0.55)]",
+        "product-card-premium group relative flex min-h-[520px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,#141416_0%,#0C0C0E_100%)] p-6 transition duration-500 will-change-transform hover:border-white/20 hover:shadow-[0_34px_120px_rgba(0,0,0,0.55)]",
         large && "lg:col-span-2 lg:min-h-[580px]",
         className
       )}
@@ -45,7 +45,7 @@ export function ProductCard({ id, name, description, price, category, shape, acc
           </div>
           <span className="h-2 w-2 rounded-full bg-[#39FF14]" />
         </div>
-        <motion.div className="relative transition duration-700 group-hover:scale-[1.055]" whileHover={{ x: 4, y: -6 }}>
+        <motion.div className="relative transition duration-700 will-change-transform group-hover:scale-[1.055]" whileHover={{ x: 4, y: -6 }}>
           <ProductVisual shape={shape} size={large ? "lg" : "md"} accent={accent} />
         </motion.div>
       </div>
@@ -56,7 +56,7 @@ export function ProductCard({ id, name, description, price, category, shape, acc
           <p className="text-lg font-semibold text-white">{price}</p>
           <Link
             href={`/product/${id}`}
-            className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black opacity-100 shadow-[0_14px_36px_rgba(255,255,255,0.12)] transition hover:bg-zinc-200 lg:translate-y-3 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
+            className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black opacity-100 shadow-[0_14px_36px_rgba(255,255,255,0.12)] transition duration-300 hover:bg-zinc-200 hover:shadow-[0_18px_44px_rgba(255,255,255,0.16)] lg:translate-y-3 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
           >
             Детальніше
           </Link>
