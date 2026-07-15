@@ -13,10 +13,18 @@ export function SiteHeader() {
   const [activeSlug, setActiveSlug] = useState<CategorySlug | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [compact, setCompact] = useState(false);
+  const [mobileNavHidden, setMobileNavHidden] = useState(false);
   const activeCategory = categories.find((category) => category.slug === activeSlug);
 
   useEffect(() => {
-    const updateHeader = () => setCompact(window.scrollY > 24);
+    let lastY = window.scrollY;
+
+    const updateHeader = () => {
+      const currentY = window.scrollY;
+      setCompact(currentY > 24);
+      setMobileNavHidden(currentY > 120 && currentY > lastY);
+      lastY = currentY;
+    };
 
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
@@ -67,7 +75,13 @@ export function SiteHeader() {
             </Link>
           </div>
         </div>
-        <div className={cn("no-scrollbar flex gap-5 overflow-x-auto border-t border-white/[0.06] px-5 text-sm text-zinc-500 transition-all duration-500 lg:hidden", compact ? "py-2" : "py-3")}>
+        <div
+          className={cn(
+            "no-scrollbar flex gap-5 overflow-x-auto border-t border-white/[0.06] px-5 text-sm text-zinc-500 transition-all duration-500 lg:hidden",
+            compact ? "py-2" : "py-3",
+            mobileNavHidden ? "max-h-0 -translate-y-2 overflow-hidden border-transparent py-0 opacity-0" : "max-h-12 translate-y-0 opacity-100"
+          )}
+        >
           {categories.map((category) => (
             <Link key={category.slug} href={category.href} className="shrink-0 transition hover:text-white">
               {category.navLabel}

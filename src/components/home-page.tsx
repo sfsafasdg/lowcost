@@ -62,7 +62,7 @@ function HeroSection() {
 
   return (
     <section
-      className="relative flex min-h-screen items-center overflow-hidden px-5 pb-10 pt-36 lg:pt-20"
+      className="relative flex min-h-screen items-center overflow-hidden px-5 pb-14 pt-32 lg:pb-10 lg:pt-20"
       onMouseMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect();
         mouseX.set((event.clientX - rect.left) / rect.width - 0.5);
@@ -79,19 +79,35 @@ function HeroSection() {
       <div className="absolute bottom-0 left-1/2 h-80 w-[90vw] -translate-x-1/2 rounded-[100%] bg-white/[0.026] blur-3xl" />
       <div className={cn(ds.spacing.container, "relative grid items-center gap-6 lg:grid-cols-[0.72fr_1.28fr]")}>
         <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.9, ease: ds.motion.ease }} className="z-10">
-          <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-sm text-zinc-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl">
+          <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-sm text-zinc-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl lg:mb-7">
             <span className="h-1.5 w-1.5 rounded-full bg-[#39FF14]" />
             Преміальний реселер Apple в Україні
           </div>
           <h1 className={cn(ds.typography.hero, "max-w-3xl font-semibold text-white")}>Apple техніка. Без зайвого шуму.</h1>
-          <p className="mt-7 max-w-lg text-lg leading-8 text-zinc-400">
+          <p className="mt-5 max-w-lg text-base leading-7 text-zinc-400 lg:mt-7 lg:text-lg lg:leading-8">
             iPhone, MacBook, Watch, AirPods і аксесуари з гарантією та чесною консультацією.
           </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row lg:mt-9">
             <Button href="/catalog">Переглянути каталог</Button>
             <Button href="/iphone" variant="secondary">
               Обрати пристрій
             </Button>
+          </div>
+
+          <div className="mobile-hero-showcase relative mt-8 h-[455px] overflow-hidden rounded-[2.4rem] border border-white/[0.085] bg-[linear-gradient(145deg,rgba(255,255,255,0.058),rgba(255,255,255,0.012))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_48px_120px_rgba(0,0,0,0.55)] backdrop-blur-2xl sm:h-[500px] lg:hidden">
+            <div className="absolute left-1/2 top-[45%] h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39FF14]/11 blur-3xl" />
+            <div className="absolute right-[-10%] top-8 h-64 w-64 rounded-full bg-[#8B5CFF]/13 blur-3xl" />
+            <div className="absolute left-[-10%] bottom-0 h-56 w-56 rounded-full bg-black/70 blur-3xl" />
+            <motion.div animate={{ y: [0, -12, 0], rotate: [-2.5, -1.2, -2.5] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute left-[15%] top-[-12%] w-[70%]">
+              <ProductVisual shape="phone" size="hero" accent="green" />
+            </motion.div>
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[7%] right-[-3%] w-[44%]">
+              <ProductVisual shape="watch" size="lg" accent="purple" />
+            </motion.div>
+            <motion.div animate={{ y: [0, -6, 0], rotate: [0, -1, 0] }} transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[8%] left-[-6%] w-[44%]">
+              <ProductVisual shape="buds" size="md" accent="neutral" />
+            </motion.div>
+            <div className="absolute bottom-0 left-1/2 h-24 w-[84%] -translate-x-1/2 rounded-[100%] bg-white/8 blur-2xl" />
           </div>
         </motion.div>
 
@@ -100,7 +116,7 @@ function HeroSection() {
           initial={{ opacity: 0, scale: 0.94, y: 34 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.05, ease: ds.motion.ease, delay: 0.12 }}
-          className="hero-showcase relative min-h-[540px] sm:min-h-[650px] lg:min-h-[780px]"
+          className="hero-showcase relative hidden min-h-[780px] lg:block"
         >
           <div className="absolute left-1/2 top-[55%] h-[80%] w-[92%] -translate-x-1/2 -translate-y-1/2 rounded-[3.5rem] border border-white/[0.085] bg-[linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.008))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_90px_190px_rgba(0,0,0,0.72)] backdrop-blur-2xl" />
           <div className="absolute left-1/2 top-[55%] h-[64%] w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39FF14]/10 blur-3xl" />
@@ -176,7 +192,7 @@ function CategoryExperience() {
           title="Категорії з відчуттям преміального шоуруму."
           text="Великі продуктові блоки, чиста навігація і зрозумілий шлях до покупки без маркетплейсного шуму."
         />
-        <div className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-5 pb-2 lg:grid lg:snap-none lg:grid-cols-6 lg:overflow-visible lg:pb-0">
+        <div className="mobile-shop-carousel no-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 sm:gap-5 lg:mx-0 lg:mt-14 lg:grid lg:snap-none lg:grid-cols-6 lg:overflow-visible lg:px-0 lg:pb-0">
           {premiumCategories.map((category, index) => (
             <motion.div
               key={category.name}
@@ -185,11 +201,11 @@ function CategoryExperience() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: index * 0.06, duration: 0.65, ease: ds.motion.ease }}
               whileHover={{ y: -8 }}
-              className={cn("w-[82vw] shrink-0 snap-start sm:w-[420px] lg:w-auto lg:shrink", index < 2 ? "lg:col-span-3" : "lg:col-span-2")}
+              className={cn("w-[86vw] shrink-0 snap-center sm:w-[440px] lg:w-auto lg:shrink", index < 2 ? "lg:col-span-3" : "lg:col-span-2")}
             >
               <Link
                 href={category.href}
-                className="group relative flex min-h-[430px] flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,#111113,#09090A)] p-6 transition hover:border-white/20 hover:shadow-[0_34px_120px_rgba(0,0,0,0.5)]"
+                className="group relative flex min-h-[470px] flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,#111113,#09090A)] p-6 transition hover:border-white/20 hover:shadow-[0_34px_120px_rgba(0,0,0,0.5)] lg:min-h-[430px]"
               >
                 <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                 <div className="absolute right-0 top-0 h-60 w-60 rounded-full bg-white/[0.035] blur-3xl transition group-hover:bg-white/[0.055]" />
@@ -221,9 +237,9 @@ function FeaturedProducts() {
           title="Популярні пристрої, які хочеться купити з першого погляду."
           text="Відібрані позиції з чистою презентацією, ціною, категорією і швидким переходом до покупки."
         />
-        <div className="no-scrollbar mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-5 pb-2 lg:grid lg:snap-none lg:grid-cols-4 lg:overflow-visible lg:pb-0">
+        <div className="mobile-shop-carousel no-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 sm:gap-5 lg:mx-0 lg:mt-14 lg:grid lg:snap-none lg:grid-cols-4 lg:overflow-visible lg:px-0 lg:pb-0">
           {featured.map((product, index) => (
-            <ProductCard key={product.id} {...product} price={product.priceLabel} large={index === 0} className="w-[82vw] shrink-0 snap-start sm:w-[420px] lg:w-auto lg:shrink" />
+            <ProductCard key={product.id} {...product} price={product.priceLabel} large={index === 0} className="w-[86vw] shrink-0 snap-center sm:w-[440px] lg:w-auto lg:shrink" />
           ))}
         </div>
       </div>

@@ -50,12 +50,12 @@ export function CategoryPage({ category, products }: { category: StoreCategory; 
           </div>
         </section>
 
-        <section className={ds.spacing.section}>
+        <section className="px-5 py-14 sm:py-20 lg:py-32">
           <div className={ds.spacing.container}>
             <SectionIntro eyebrow="Моделі" title={`${category.name}: актуальні позиції`} text="Виберіть модель або відкрийте продуктову сторінку для кольорів, пам'яті, ціни та характеристик." />
-            <div className="mt-14 grid gap-5 lg:grid-cols-3">
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:mt-14 lg:grid-cols-3 lg:gap-5">
               {products.map((product, index) => (
-                <ProductCard key={product.id} {...product} price={product.priceLabel} large={index === 0} />
+                <ProductCard key={product.id} {...product} price={product.priceLabel} large={index === 0} listing />
               ))}
             </div>
           </div>

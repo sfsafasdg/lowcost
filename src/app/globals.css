@@ -138,17 +138,15 @@ body::after {
   display: none;
 }
 
+.mobile-shop-carousel {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: 1.25rem;
+}
+
 @media (max-width: 768px) {
   body::before {
     background-size: 64px 64px;
-  }
-
-  .hero-showcase {
-    min-height: 360px;
-    margin-top: -0.75rem;
-    margin-bottom: -2.25rem;
-    transform: scale(0.82);
-    transform-origin: center top;
   }
 
   .hero-reflection {
@@ -157,10 +155,8 @@ body::after {
 }
 
 @media (max-width: 420px) {
-  .hero-showcase {
-    min-height: 330px;
-    margin-top: -1rem;
-    margin-bottom: -2.75rem;
-    transform: scale(0.76);
+  .mobile-hero-showcase {
+    height: 410px;
+    border-radius: 2rem;
   }
 }
