@@ -16,10 +16,10 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-[#050505]/78 backdrop-blur-2xl">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-[#050505]/72 shadow-[0_18px_70px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
         <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5">
           <Link href="/" className="flex items-center gap-3" aria-label="Lowcost home" onMouseEnter={() => setActiveSlug(null)}>
-            <span className="relative h-9 w-9 overflow-hidden rounded-xl border border-[#39FF14]/28 bg-black shadow-[0_0_26px_rgba(57,255,20,0.14)]">
+            <span className="relative h-9 w-9 overflow-hidden rounded-xl border border-[#39FF14]/28 bg-black shadow-[0_0_30px_rgba(57,255,20,0.16)]">
               <Image src="/lowcost-logo.png" alt="Lowcost logo" fill sizes="36px" className="object-cover" priority />
             </span>
             <span className="text-sm font-semibold tracking-[-0.02em] text-white">Lowcost</span>
@@ -43,7 +43,7 @@ export function SiteHeader() {
             <button
               onClick={() => setSearchOpen(true)}
               aria-label="Відкрити пошук"
-              className="grid h-9 w-9 place-items-center rounded-full border border-white/10 text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.05] hover:text-white"
+              className="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.025] text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
             >
               <span className="relative h-4 w-4 rounded-full border border-current after:absolute after:-bottom-1 after:-right-1 after:h-2 after:w-px after:rotate-[-45deg] after:bg-current" />
             </button>
@@ -51,6 +51,13 @@ export function SiteHeader() {
               Каталог
             </Link>
           </div>
+        </div>
+        <div className="no-scrollbar flex gap-5 overflow-x-auto border-t border-white/[0.06] px-5 py-3 text-sm text-zinc-500 lg:hidden">
+          {categories.map((category) => (
+            <Link key={category.slug} href={category.href} className="shrink-0 transition hover:text-white">
+              {category.navLabel}
+            </Link>
+          ))}
         </div>
         <AnimatePresence>{activeCategory ? <MegaMenu key={activeCategory.slug} category={activeCategory} onClose={() => setActiveSlug(null)} /> : null}</AnimatePresence>
       </header>

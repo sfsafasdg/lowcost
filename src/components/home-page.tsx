@@ -37,6 +37,7 @@ const purchaseSteps = [
 
 const featured = ["iphone-17-pro", "macbook-pro", "airpods-pro", "jbl-charge"].map((id) => products.find((product) => product.id === id)!);
 const accessories = ["iphone-accessories", "usb-c-charger", "power-bank"].map((id) => products.find((product) => product.id === id)!);
+const premiumCategories = categories.filter((category) => ["iphone", "watch", "airpods", "macbook", "accessories"].includes(category.slug));
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -48,31 +49,45 @@ function HeroSection() {
   const mouseY = useMotionValue(0);
   const smoothX = useSpring(mouseX, { stiffness: 70, damping: 24 });
   const smoothY = useSpring(mouseY, { stiffness: 70, damping: 24 });
-  const productX = useTransform(smoothX, [-0.5, 0.5], [-18, 18]);
-  const productY = useTransform(smoothY, [-0.5, 0.5], [-12, 12]);
+  const productX = useTransform(smoothX, [-0.5, 0.5], [-22, 22]);
+  const productY = useTransform(smoothY, [-0.5, 0.5], [-16, 16]);
+  const floatX = useTransform(smoothX, [-0.5, 0.5], [18, -18]);
+  const floatY = useTransform(smoothY, [-0.5, 0.5], [12, -12]);
 
   return (
     <section
-      className="relative flex min-h-screen items-center overflow-hidden px-5 pt-20"
+      className="relative flex min-h-screen items-center overflow-hidden px-5 pb-10 pt-36 lg:pt-20"
       onMouseMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect();
         mouseX.set((event.clientX - rect.left) / rect.width - 0.5);
         mouseY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_50%,rgba(139,92,255,0.16),transparent_34rem),radial-gradient(circle_at_45%_20%,rgba(57,255,20,0.07),transparent_30rem)]" />
-      <div className={cn(ds.spacing.container, "relative grid items-center gap-12 lg:grid-cols-[0.86fr_1.14fr]")}>
-        <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.9, ease: ds.motion.ease }}>
-          <p className="mb-6 text-sm font-medium text-zinc-400">Apple, JBL та преміальні аксесуари в Україні</p>
-          <h1 className={cn(ds.typography.hero, "max-w-3xl font-semibold text-white")}>Apple. Без компромісів.</h1>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(139,92,255,0.14),transparent_35rem),radial-gradient(circle_at_48%_18%,rgba(57,255,20,0.075),transparent_28rem),linear-gradient(180deg,#050505_0%,#070708_52%,#050505_100%)]" />
+      <div className="absolute inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-white/14 to-transparent" />
+      <div className="absolute bottom-0 left-1/2 h-72 w-[86vw] -translate-x-1/2 rounded-[100%] bg-white/[0.032] blur-3xl" />
+      <div className={cn(ds.spacing.container, "relative grid items-center gap-8 lg:grid-cols-[0.82fr_1.18fr]")}>
+        <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.9, ease: ds.motion.ease }} className="z-10">
+          <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-sm text-zinc-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#39FF14]" />
+            Преміальний Apple reseller в Україні
+          </div>
+          <h1 className={cn(ds.typography.hero, "max-w-3xl font-semibold text-white")}>Apple-пристрої, які хочеться обрати одразу.</h1>
           <p className="mt-7 max-w-xl text-lg leading-8 text-zinc-400">
-            Преміальна техніка, офіційна гарантія, швидка доставка та людська консультація перед покупкою.
+            iPhone, MacBook, Apple Watch, AirPods та аксесуари з гарантією, перевіркою якості і консультацією перед покупкою.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button href="/catalog">Переглянути каталог</Button>
             <Button href="/iphone" variant="secondary">
-              Обрати iPhone
+              Обрати пристрій
             </Button>
+          </div>
+          <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
+            {["Оригінальна техніка", "Гарантія", "Швидка доставка"].map((item) => (
+              <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 text-xs font-medium text-zinc-300 backdrop-blur-xl">
+                {item}
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -81,18 +96,36 @@ function HeroSection() {
           initial={{ opacity: 0, scale: 0.94, y: 34 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.05, ease: ds.motion.ease, delay: 0.12 }}
-          className="relative min-h-[560px] lg:min-h-[680px]"
+          className="hero-showcase relative min-h-[520px] sm:min-h-[610px] lg:min-h-[720px]"
         >
-          <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-x-0 top-10">
-            <ProductVisual shape="laptop" size="hero" accent="purple" />
+          <div className="absolute left-1/2 top-[54%] h-[76%] w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-[3rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.07),rgba(255,255,255,0.015))] shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_70px_160px_rgba(0,0,0,0.55)] backdrop-blur-2xl" />
+          <div className="absolute left-1/2 top-[54%] h-[58%] w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39FF14]/9 blur-3xl" />
+          <div className="absolute right-[11%] top-[17%] h-64 w-64 rounded-full bg-[#8B5CFF]/13 blur-3xl" />
+
+          <motion.div animate={{ y: [0, -9, 0], rotate: [0, 0.8, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[5%] left-[16%] w-[72%] opacity-95">
+            <ProductVisual shape="laptop" size="lg" accent="purple" />
           </motion.div>
-          <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-6 left-[7%] w-[38%]">
-            <ProductVisual shape="phone" size="lg" accent="green" />
+          <motion.div animate={{ y: [0, -16, 0], rotate: [-3, -1, -3] }} transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }} className="absolute left-[22%] top-[1%] w-[43%]">
+            <ProductVisual shape="phone" size="hero" accent="green" />
           </motion.div>
-          <Link href="/watch" className="absolute bottom-20 right-[6%] hidden w-[28%] rounded-[1.5rem] border border-white/10 bg-black/25 p-3 backdrop-blur-xl transition hover:border-white/20 hover:bg-white/[0.04] lg:block">
-            <ProductVisual shape="watch" size="sm" accent="green" />
-            <p className="px-2 pb-2 text-sm font-semibold text-white">View Apple Watch</p>
+          <motion.div style={{ x: floatX, y: floatY }} animate={{ y: [0, 11, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[18%] right-[4%] w-[28%]">
+            <ProductVisual shape="watch" size="lg" accent="purple" />
+          </motion.div>
+          <motion.div animate={{ y: [0, -8, 0], rotate: [0, -1.2, 0] }} transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[12%] left-[3%] w-[25%]">
+            <ProductVisual shape="buds" size="md" accent="neutral" />
+          </motion.div>
+
+          <Link href="/product/iphone-17-pro" className="hero-glass-card absolute left-[2%] top-[17%] hidden w-52 rounded-3xl border border-white/12 bg-black/30 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition hover:-translate-y-1 hover:border-white/22 lg:block">
+            <p className="text-xs text-zinc-500">Головний вибір</p>
+            <p className="mt-1 text-lg font-semibold tracking-[-0.03em] text-white">iPhone 17 Pro</p>
+            <p className="mt-3 text-sm text-zinc-400">від 49 999 ₴</p>
           </Link>
+          <Link href="/watch" className="hero-glass-card absolute bottom-[23%] right-[1%] hidden w-48 rounded-3xl border border-white/12 bg-black/30 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition hover:-translate-y-1 hover:border-white/22 lg:block">
+            <p className="text-xs text-zinc-500">Екосистема</p>
+            <p className="mt-1 text-lg font-semibold tracking-[-0.03em] text-white">Watch + AirPods</p>
+            <p className="mt-3 text-sm text-[#39FF14]">Переглянути</p>
+          </Link>
+          <div className="hero-reflection absolute bottom-[2%] left-1/2 h-28 w-[72%] -translate-x-1/2 rounded-[100%] bg-white/10 blur-2xl" />
         </motion.div>
       </div>
     </section>
@@ -122,52 +155,44 @@ function TrustSection() {
 }
 
 function CategoryExperience() {
-  const [active, setActive] = useState(0);
-
   return (
     <section className={ds.spacing.section}>
       <div className={ds.spacing.container}>
         <SectionIntro
-          eyebrow="Категорії"
-          title="Обирайте техніку так, як у преміальному шоурумі."
-          text="Чистий product selector без зайвого шуму: головні категорії, великі форми, зрозуміла навігація."
+          eyebrow="Shop by category"
+          title="Категорії з відчуттям преміального шоуруму."
+          text="Великі продуктовые блоки, чиста навігація і зрозумілий шлях до покупки без маркетплейсного шуму."
         />
-        <div className="mt-14 grid gap-4 lg:grid-cols-[0.82fr_1.18fr]">
-          <div className="grid gap-2">
-            {categories.map((category, index) => (
+        <div className="mt-14 grid gap-5 lg:grid-cols-6">
+          {premiumCategories.map((category, index) => (
+            <motion.div
+              key={category.name}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: index * 0.06, duration: 0.65, ease: ds.motion.ease }}
+              whileHover={{ y: -8 }}
+              className={cn(index < 2 ? "lg:col-span-3" : "lg:col-span-2")}
+            >
               <Link
-                key={category.name}
                 href={category.href}
-                onMouseEnter={() => setActive(index)}
-                onFocus={() => setActive(index)}
-                className={cn(
-                  "flex items-center justify-between border-b border-white/10 px-1 py-5 text-left transition",
-                  active === index ? "text-white" : "text-zinc-500 hover:text-zinc-300"
-                )}
+                className="group relative flex min-h-[430px] flex-col justify-between overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,#111113,#09090A)] p-6 transition hover:border-white/20 hover:shadow-[0_34px_120px_rgba(0,0,0,0.5)]"
               >
-                <span className="text-3xl font-semibold tracking-[-0.045em]">{category.name}</span>
-                <span className="hidden text-sm md:block">{category.description}</span>
-              </Link>
-            ))}
-          </div>
-          <div className="relative min-h-[560px] overflow-hidden rounded-[2rem] border border-white/10 bg-[#0B0B0D]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={categories[active].name}
-                initial={{ opacity: 0, scale: 0.96, y: 18 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.98, y: -18 }}
-                transition={{ duration: 0.45, ease: ds.motion.ease }}
-                className="absolute inset-0 flex flex-col justify-between p-8"
-              >
-                <div>
-                  <p className="text-sm text-zinc-500">{categories[active].eyebrow}</p>
-                  <h3 className="mt-2 text-5xl font-semibold tracking-[-0.055em] text-white">{categories[active].name}</h3>
+                <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                <div className="absolute right-0 top-0 h-60 w-60 rounded-full bg-white/[0.035] blur-3xl transition group-hover:bg-white/[0.055]" />
+                <div className="relative z-10">
+                  <p className="text-sm text-zinc-500">{category.eyebrow}</p>
+                  <h3 className="mt-2 text-4xl font-semibold tracking-[-0.055em] text-white">{category.name}</h3>
+                  <p className="mt-4 max-w-md text-sm leading-6 text-zinc-400">{category.description}</p>
                 </div>
-                <ProductVisual shape={categories[active].shape} size="lg" accent={categories[active].accent} />
-              </motion.div>
-            </AnimatePresence>
-          </div>
+                <ProductVisual shape={category.shape} size={index < 2 ? "lg" : "md"} accent={category.accent} className="relative z-10 transition duration-700 group-hover:scale-[1.045]" />
+                <div className="relative z-10 flex items-center justify-between text-sm">
+                  <span className="font-semibold text-white">Переглянути</span>
+                  <span className="text-[#39FF14] transition group-hover:translate-x-1">→</span>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -179,9 +204,9 @@ function FeaturedProducts() {
     <section className={cn(ds.spacing.section, "bg-[#080809]")}>
       <div className={ds.spacing.container}>
         <SectionIntro
-          eyebrow="Рекомендовано"
-          title="Головні продукти без маркетплейсного хаосу."
-          text="Невелика добірка техніки, яку легко зрозуміти, порівняти та купити."
+          eyebrow="Popular Products"
+          title="Популярні пристрої, які хочеться купити з першого погляду."
+          text="Відібрані позиції з чистою презентацією, ціною, категорією і швидким переходом до покупки."
         />
         <div className="mt-14 grid gap-5 lg:grid-cols-4">
           {featured.map((product, index) => (

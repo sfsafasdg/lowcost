@@ -30,32 +30,40 @@ export function ProductVisual({
   }[size];
 
   return (
-    <div className={cn("relative mx-auto flex items-center justify-center", sizeClass, className)} style={{ "--product-glow": glow } as React.CSSProperties}>
-      <div className="absolute left-1/2 top-1/2 h-[62%] w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--product-glow)] blur-3xl" />
+    <div className={cn("product-visual relative mx-auto flex items-center justify-center", sizeClass, className)} style={{ "--product-glow": glow } as React.CSSProperties}>
+      <div className="absolute left-1/2 top-1/2 h-[68%] w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--product-glow)] blur-3xl" />
+      <div className="absolute bottom-[7%] left-1/2 h-[10%] w-[58%] -translate-x-1/2 rounded-full bg-black/60 blur-2xl" />
       {shape === "phone" ? (
-        <div className="relative h-[82%] w-[34%] min-w-20 rounded-[2rem] border border-white/20 bg-[linear-gradient(145deg,#2a2a2d,#050505_46%,#17171a)] p-2 shadow-[0_36px_110px_rgba(0,0,0,0.65)]">
-          <div className="h-full rounded-[1.5rem] border border-white/8 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.18),transparent_26%),linear-gradient(160deg,#111114,#050505)]" />
+        <div className="relative h-[82%] w-[34%] min-w-20 overflow-hidden rounded-[2rem] border border-white/20 bg-[linear-gradient(145deg,#3a3a3f,#050505_46%,#17171a)] p-2 shadow-[0_42px_130px_rgba(0,0,0,0.72)]">
+          <div className="absolute inset-y-8 left-4 w-px bg-white/28 blur-[1px]" />
+          <div className="absolute -right-12 -top-16 h-40 w-20 rotate-12 bg-white/20 blur-2xl" />
+          <div className="h-full rounded-[1.5rem] border border-white/8 bg-[radial-gradient(circle_at_52%_18%,rgba(255,255,255,0.22),transparent_26%),linear-gradient(160deg,#111114,#050505)]" />
           <div className="absolute left-1/2 top-3 h-5 w-20 -translate-x-1/2 rounded-full bg-black" />
         </div>
       ) : null}
       {shape === "laptop" ? (
         <div className="relative w-[78%]">
-          <div className="mx-auto aspect-[16/10] w-[82%] rounded-t-2xl border border-white/16 bg-[linear-gradient(145deg,#202024,#070707)] p-3 shadow-[0_36px_110px_rgba(0,0,0,0.65)]">
-            <div className="h-full rounded-xl bg-[radial-gradient(circle_at_50%_20%,rgba(139,92,255,0.22),transparent_30%),#050505]" />
+          <div className="mx-auto aspect-[16/10] w-[82%] overflow-hidden rounded-t-2xl border border-white/16 bg-[linear-gradient(145deg,#2d2d33,#070707)] p-3 shadow-[0_42px_130px_rgba(0,0,0,0.7)]">
+            <div className="relative h-full overflow-hidden rounded-xl bg-[radial-gradient(circle_at_50%_20%,rgba(139,92,255,0.22),transparent_30%),#050505]">
+              <div className="absolute -left-16 top-0 h-full w-24 rotate-12 bg-white/10 blur-xl" />
+              <div className="absolute inset-x-10 top-8 h-px bg-white/20" />
+            </div>
           </div>
           <div className="h-5 rounded-b-[2rem] bg-[linear-gradient(90deg,#27272a,#d4d4d8_50%,#27272a)] shadow-[0_20px_60px_rgba(0,0,0,0.45)]" />
         </div>
       ) : null}
       {shape === "tablet" ? (
-        <div className="relative h-[72%] w-[54%] rounded-[2rem] border border-white/16 bg-[linear-gradient(145deg,#252529,#080808)] p-3 shadow-[0_36px_110px_rgba(0,0,0,0.62)]">
-          <div className="h-full rounded-[1.45rem] bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.16),transparent_28%),#050505]" />
+        <div className="relative h-[72%] w-[54%] overflow-hidden rounded-[2rem] border border-white/16 bg-[linear-gradient(145deg,#303036,#080808)] p-3 shadow-[0_42px_120px_rgba(0,0,0,0.68)]">
+          <div className="absolute -right-10 top-8 h-56 w-20 rotate-12 bg-white/12 blur-2xl" />
+          <div className="h-full rounded-[1.45rem] bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.18),transparent_28%),#050505]" />
         </div>
       ) : null}
       {shape === "watch" ? (
         <div className="relative h-[60%] w-[34%]">
           <div className="absolute left-1/2 top-0 h-full w-[42%] -translate-x-1/2 rounded-full bg-zinc-800" />
-          <div className="absolute inset-x-0 top-1/2 aspect-square -translate-y-1/2 rounded-[2rem] border border-white/18 bg-[linear-gradient(145deg,#2a2a2d,#070707)] p-3 shadow-[0_34px_100px_rgba(0,0,0,0.62)]">
-            <div className="h-full rounded-[1.4rem] bg-[radial-gradient(circle_at_50%_30%,rgba(57,255,20,0.2),transparent_34%),#050505]" />
+          <div className="absolute inset-x-0 top-1/2 aspect-square -translate-y-1/2 overflow-hidden rounded-[2rem] border border-white/18 bg-[linear-gradient(145deg,#36363a,#070707)] p-3 shadow-[0_38px_110px_rgba(0,0,0,0.66)]">
+            <div className="h-full rounded-[1.4rem] bg-[radial-gradient(circle_at_50%_30%,rgba(57,255,20,0.22),transparent_34%),#050505]" />
+            <div className="absolute -right-5 top-4 h-28 w-10 rotate-12 bg-white/16 blur-xl" />
           </div>
         </div>
       ) : null}
