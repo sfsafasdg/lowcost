@@ -35,7 +35,7 @@ export function CatalogClient() {
       <MotionShell>
         <section className="px-5 pb-16 pt-32 lg:pb-24 lg:pt-40">
           <div className={ds.spacing.container}>
-            <SectionIntro eyebrow="Catalog" title="Каталог Lowcost." text="Фільтруйте техніку за категоріями, сортуйте за ціною і відкривайте детальні продуктові сторінки." />
+            <SectionIntro eyebrow="Каталог" title="Каталог Lowcost." text="Фільтруйте техніку за категоріями, сортуйте за ціною і відкривайте детальні продуктові сторінки." />
           </div>
         </section>
 

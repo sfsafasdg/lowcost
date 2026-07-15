@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const product = getProduct(id);
 
   return {
-    title: product ? `${product.name} | Lowcost` : "Product | Lowcost",
+    title: product ? `${product.name} | Lowcost` : "Товар | Lowcost",
   };
 }
 

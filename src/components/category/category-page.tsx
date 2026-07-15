@@ -63,7 +63,7 @@ export function CategoryPage({ category, products }: { category: StoreCategory; 
 
         <section className={cn(ds.spacing.section, "bg-[#080809]")}>
           <div className={cn(ds.spacing.container, "grid gap-12 lg:grid-cols-[0.75fr_1.25fr]")}>
-            <SectionIntro eyebrow="Technical information" title="Важливі деталі перед покупкою." text="Коротко про характеристики, умови та те, що варто уточнити перед замовленням." />
+            <SectionIntro eyebrow="Технічна інформація" title="Важливі деталі перед покупкою." text="Коротко про характеристики, умови та те, що варто уточнити перед замовленням." />
             <div className="grid gap-4 sm:grid-cols-2">
               {category.technical.map(([title, value]) => (
                 <div key={title} className="rounded-[1.35rem] border border-white/10 bg-white/[0.025] p-6">

@@ -11,7 +11,7 @@ export function EcosystemMarquee() {
     <section className="overflow-hidden border-y border-white/[0.08] bg-white/[0.018] py-10">
       <div className="mx-auto mb-8 flex max-w-[1440px] items-end justify-between gap-6 px-5">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#39FF14]/75">Explore our ecosystem</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#39FF14]/75">Екосистема</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-[-0.045em] text-white">Вся технологічна екосистема Lowcost.</h2>
         </div>
         <Link href="/catalog" className="hidden text-sm font-semibold text-zinc-300 transition hover:text-white md:block">

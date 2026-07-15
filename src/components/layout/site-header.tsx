@@ -18,7 +18,7 @@ export function SiteHeader() {
     <>
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-[#050505]/72 shadow-[0_18px_70px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
         <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5">
-          <Link href="/" className="flex items-center gap-3" aria-label="Lowcost home" onMouseEnter={() => setActiveSlug(null)}>
+          <Link href="/" className="flex items-center gap-3" aria-label="Головна Lowcost" onMouseEnter={() => setActiveSlug(null)}>
             <span className="relative h-9 w-9 overflow-hidden rounded-xl border border-[#39FF14]/28 bg-black shadow-[0_0_30px_rgba(57,255,20,0.16)]">
               <Image src="/lowcost-logo.png" alt="Lowcost logo" fill sizes="36px" className="object-cover" priority />
             </span>

@@ -63,31 +63,25 @@ function HeroSection() {
         mouseY.set((event.clientY - rect.top) / rect.height - 0.5);
       }}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(139,92,255,0.14),transparent_35rem),radial-gradient(circle_at_48%_18%,rgba(57,255,20,0.075),transparent_28rem),linear-gradient(180deg,#050505_0%,#070708_52%,#050505_100%)]" />
-      <div className="absolute inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-white/14 to-transparent" />
-      <div className="absolute bottom-0 left-1/2 h-72 w-[86vw] -translate-x-1/2 rounded-[100%] bg-white/[0.032] blur-3xl" />
-      <div className={cn(ds.spacing.container, "relative grid items-center gap-8 lg:grid-cols-[0.82fr_1.18fr]")}>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_44%,rgba(139,92,255,0.16),transparent_34rem),radial-gradient(circle_at_57%_29%,rgba(57,255,20,0.085),transparent_28rem),linear-gradient(180deg,#010102_0%,#030304_48%,#050505_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_48%,transparent_0%,rgba(0,0,0,0.34)_64%,rgba(0,0,0,0.72)_100%)]" />
+      <div className="absolute inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute bottom-0 left-1/2 h-80 w-[90vw] -translate-x-1/2 rounded-[100%] bg-white/[0.026] blur-3xl" />
+      <div className={cn(ds.spacing.container, "relative grid items-center gap-6 lg:grid-cols-[0.72fr_1.28fr]")}>
         <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.9, ease: ds.motion.ease }} className="z-10">
-          <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-sm text-zinc-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl">
+          <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-sm text-zinc-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl">
             <span className="h-1.5 w-1.5 rounded-full bg-[#39FF14]" />
-            Преміальний Apple reseller в Україні
+            Преміальний реселер Apple в Україні
           </div>
-          <h1 className={cn(ds.typography.hero, "max-w-3xl font-semibold text-white")}>Apple-пристрої, які хочеться обрати одразу.</h1>
-          <p className="mt-7 max-w-xl text-lg leading-8 text-zinc-400">
-            iPhone, MacBook, Apple Watch, AirPods та аксесуари з гарантією, перевіркою якості і консультацією перед покупкою.
+          <h1 className={cn(ds.typography.hero, "max-w-3xl font-semibold text-white")}>Apple техніка. Без зайвого шуму.</h1>
+          <p className="mt-7 max-w-lg text-lg leading-8 text-zinc-400">
+            iPhone, MacBook, Watch, AirPods і аксесуари з гарантією та чесною консультацією.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Button href="/catalog">Переглянути каталог</Button>
             <Button href="/iphone" variant="secondary">
               Обрати пристрій
             </Button>
-          </div>
-          <div className="mt-10 grid max-w-xl grid-cols-3 gap-3">
-            {["Оригінальна техніка", "Гарантія", "Швидка доставка"].map((item) => (
-              <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 text-xs font-medium text-zinc-300 backdrop-blur-xl">
-                {item}
-              </div>
-            ))}
           </div>
         </motion.div>
 
@@ -96,31 +90,32 @@ function HeroSection() {
           initial={{ opacity: 0, scale: 0.94, y: 34 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.05, ease: ds.motion.ease, delay: 0.12 }}
-          className="hero-showcase relative min-h-[520px] sm:min-h-[610px] lg:min-h-[720px]"
+          className="hero-showcase relative min-h-[540px] sm:min-h-[650px] lg:min-h-[780px]"
         >
-          <div className="absolute left-1/2 top-[54%] h-[76%] w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-[3rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.07),rgba(255,255,255,0.015))] shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_70px_160px_rgba(0,0,0,0.55)] backdrop-blur-2xl" />
-          <div className="absolute left-1/2 top-[54%] h-[58%] w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39FF14]/9 blur-3xl" />
-          <div className="absolute right-[11%] top-[17%] h-64 w-64 rounded-full bg-[#8B5CFF]/13 blur-3xl" />
+          <div className="absolute left-1/2 top-[55%] h-[80%] w-[92%] -translate-x-1/2 -translate-y-1/2 rounded-[3.5rem] border border-white/[0.085] bg-[linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.008))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_90px_190px_rgba(0,0,0,0.72)] backdrop-blur-2xl" />
+          <div className="absolute left-1/2 top-[55%] h-[64%] w-[68%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39FF14]/10 blur-3xl" />
+          <div className="absolute right-[8%] top-[14%] h-80 w-80 rounded-full bg-[#8B5CFF]/14 blur-3xl" />
+          <div className="absolute left-[18%] top-[10%] h-72 w-72 rounded-full bg-black/70 blur-3xl" />
 
-          <motion.div animate={{ y: [0, -9, 0], rotate: [0, 0.8, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[5%] left-[16%] w-[72%] opacity-95">
-            <ProductVisual shape="laptop" size="lg" accent="purple" />
+          <motion.div animate={{ y: [0, -9, 0], rotate: [0, 0.7, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[4%] left-[9%] w-[84%] opacity-95">
+            <ProductVisual shape="laptop" size="hero" accent="purple" />
           </motion.div>
-          <motion.div animate={{ y: [0, -16, 0], rotate: [-3, -1, -3] }} transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }} className="absolute left-[22%] top-[1%] w-[43%]">
+          <motion.div animate={{ y: [0, -16, 0], rotate: [-3, -1, -3] }} transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }} className="absolute left-[20%] top-[-4%] w-[48%]">
             <ProductVisual shape="phone" size="hero" accent="green" />
           </motion.div>
-          <motion.div style={{ x: floatX, y: floatY }} animate={{ y: [0, 11, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[18%] right-[4%] w-[28%]">
+          <motion.div style={{ x: floatX, y: floatY }} animate={{ y: [0, 11, 0] }} transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[20%] right-[2%] w-[31%]">
             <ProductVisual shape="watch" size="lg" accent="purple" />
           </motion.div>
-          <motion.div animate={{ y: [0, -8, 0], rotate: [0, -1.2, 0] }} transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[12%] left-[3%] w-[25%]">
+          <motion.div animate={{ y: [0, -8, 0], rotate: [0, -1.2, 0] }} transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[14%] left-[1%] w-[28%]">
             <ProductVisual shape="buds" size="md" accent="neutral" />
           </motion.div>
 
-          <Link href="/product/iphone-17-pro" className="hero-glass-card absolute left-[2%] top-[17%] hidden w-52 rounded-3xl border border-white/12 bg-black/30 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition hover:-translate-y-1 hover:border-white/22 lg:block">
+          <Link href="/product/iphone-17-pro" className="hero-glass-card absolute left-[1%] top-[15%] hidden w-52 rounded-3xl border border-white/12 bg-black/30 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition hover:-translate-y-1 hover:border-white/22 lg:block">
             <p className="text-xs text-zinc-500">Головний вибір</p>
             <p className="mt-1 text-lg font-semibold tracking-[-0.03em] text-white">iPhone 17 Pro</p>
             <p className="mt-3 text-sm text-zinc-400">від 49 999 ₴</p>
           </Link>
-          <Link href="/watch" className="hero-glass-card absolute bottom-[23%] right-[1%] hidden w-48 rounded-3xl border border-white/12 bg-black/30 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition hover:-translate-y-1 hover:border-white/22 lg:block">
+          <Link href="/watch" className="hero-glass-card absolute bottom-[25%] right-0 hidden w-48 rounded-3xl border border-white/12 bg-black/30 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition hover:-translate-y-1 hover:border-white/22 lg:block">
             <p className="text-xs text-zinc-500">Екосистема</p>
             <p className="mt-1 text-lg font-semibold tracking-[-0.03em] text-white">Watch + AirPods</p>
             <p className="mt-3 text-sm text-[#39FF14]">Переглянути</p>
@@ -159,7 +154,7 @@ function CategoryExperience() {
     <section className={ds.spacing.section}>
       <div className={ds.spacing.container}>
         <SectionIntro
-          eyebrow="Shop by category"
+          eyebrow="Категорії"
           title="Категорії з відчуттям преміального шоуруму."
           text="Великі продуктовые блоки, чиста навігація і зрозумілий шлях до покупки без маркетплейсного шуму."
         />
@@ -204,7 +199,7 @@ function FeaturedProducts() {
     <section className={cn(ds.spacing.section, "bg-[#080809]")}>
       <div className={ds.spacing.container}>
         <SectionIntro
-          eyebrow="Popular Products"
+          eyebrow="Популярні товари"
           title="Популярні пристрої, які хочеться купити з першого погляду."
           text="Відібрані позиції з чистою презентацією, ціною, категорією і швидким переходом до покупки."
         />
@@ -258,7 +253,7 @@ function AppleExperience() {
         <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
           <div className="p-8 sm:p-12 lg:p-16">
             <SectionIntro
-              eyebrow="Apple experience"
+              eyebrow="Досвід покупки"
               title="Від першого кліку до моменту покупки."
               text="Купівля техніки має бути спокійною: зрозумілий вибір, уважна консультація, швидка доставка і підтримка після."
             />
@@ -354,7 +349,7 @@ function Footer() {
       <div className={cn(ds.spacing.container, "flex flex-col gap-8 text-sm text-zinc-500 md:flex-row md:items-center md:justify-between")}>
         <div>
           <p className="font-semibold text-white">Lowcost</p>
-          <p className="mt-2">Premium electronics store in Ukraine.</p>
+          <p className="mt-2">Преміальний магазин техніки в Україні.</p>
         </div>
         <div className="flex flex-wrap gap-5">
           {categories.map((category) => (

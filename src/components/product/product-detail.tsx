@@ -74,7 +74,7 @@ export function ProductDetail({ product, related }: { product: StoreProduct; rel
 
         <section className={cn(ds.spacing.section, "bg-[#080809]")}>
           <div className={cn(ds.spacing.container, "grid gap-12 lg:grid-cols-[0.8fr_1.2fr]")}>
-            <SectionIntro eyebrow="Specifications" title="Технічна інформація." text="Ключові характеристики і умови, які варто знати перед покупкою." />
+            <SectionIntro eyebrow="Характеристики" title="Технічна інформація." text="Ключові характеристики і умови, які варто знати перед покупкою." />
             <div className="grid gap-4 sm:grid-cols-2">
               {product.specs.map(([title, value]) => (
                 <div key={title} className="rounded-[1.35rem] border border-white/10 bg-white/[0.025] p-6">
@@ -89,7 +89,7 @@ export function ProductDetail({ product, related }: { product: StoreProduct; rel
         {related.length ? (
           <section className={ds.spacing.section}>
             <div className={ds.spacing.container}>
-              <SectionIntro eyebrow="Related" title="Схожі товари." text="Ще кілька позицій, які можуть підійти до вашого сценарію." />
+              <SectionIntro eyebrow="Схожі товари" title="Схожі товари." text="Ще кілька позицій, які можуть підійти до вашого сценарію." />
               <div className="mt-14 grid gap-5 lg:grid-cols-3">
                 {related.map((item) => (
                   <ProductCard key={item.id} {...item} price={item.priceLabel} />
